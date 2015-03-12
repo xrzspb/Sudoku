@@ -2,7 +2,6 @@
  * Created by mengyan on 3/9/15.
  */
 
-
 function createArray(rows, columns) {
     var x = new Array(rows);
     for (var i = 0; i < rows; i++) {
@@ -11,6 +10,7 @@ function createArray(rows, columns) {
     return x;
 }
 
+//create an array from 1 to rows+1
 function createNumberArray(rows) {
     var x = new Array(rows);
     for (var i = 0; i<rows; i++) {
@@ -19,7 +19,8 @@ function createNumberArray(rows) {
     return x;
 }
 
-function randomFrom(num) {
+//generate random number from 0 to num
+function randomInRange(num) {
     return Math.floor(Math.random()*num);
 }
 

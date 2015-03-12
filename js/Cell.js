@@ -5,17 +5,15 @@ function Cell() {
     this.possibleVals = [];
 }
 
-
-
-Cell.prototype.init_1 = function (row, column) {
+Cell.prototype.init = function (row, column) {
     this.row = row;
     this.column = column;
     this.value = 0;
-    this.possibleVals = [1,2,3,4,5,6,7,8,9];
+    this.possibleVals = createNumberArray(DIMENSION);
     return this;
 };
 
-Cell.prototype.init_2 = function (copy) {
+Cell.prototype.initCopy = function (copy) {
     this.row = copy.row;
     this.column = copy.column;
     this.value = copy.value;
