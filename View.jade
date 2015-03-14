@@ -3,19 +3,22 @@
 
 html
     head
+        meta(charset='utf-8')
         script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
         script(src='js/Config.js')
-        link(rel="stylesheet" type="text/css" href="style/Style.css")
+        link(rel='stylesheet' type='text/css' href='style/Style.css')
     body
-        #container
-            table(id='board')
-        br
-        #numbers
-            table(id='numbers')
+        div(class='center')
+         table(id='board')
+         br
+         table(id='numbers')
+
     script(src='js/Util.js')
     script(src='js/Cell.js')
     script(src='js/SudokuSolver.js')
     script(src='js/SudokuGenerator.js')
+    script(src='js/SudokuView.js')
+    script(src='js/ViewController.js')
 
 
 

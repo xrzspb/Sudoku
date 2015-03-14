@@ -27,3 +27,11 @@ function randomInRange(num) {
 function copyArray(array) {
     return array.slice(0);
 }
+
+function isStrEmpty(str) {
+    return (!str || !str.length);
+}
+
+function getId(row, column) {
+    return (row*DIMENSION + column).toString();
+}

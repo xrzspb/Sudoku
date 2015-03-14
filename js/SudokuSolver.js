@@ -2,18 +2,6 @@
  * Created by mengyan on 3/8/15.
  */
 
-/*create a random-generated sudoku board*/
-function createBoard() {
-    var board = createArray(DIMENSION, DIMENSION);
-    for (var i=0; i<DIMENSION; i++) {
-        for (var j=0; j<DIMENSION; j++) {
-            board[i][j] = new Cell().init(i,j);
-        }
-    }
-    board = populateBoard(board);
-    return board;
-}
-
 /*create copy of board, used for backtrace*/
 function createBoardCopy(board) {
     var boardCpy = createArray(DIMENSION, DIMENSION);
@@ -41,7 +29,7 @@ function createBoardCopy(board) {
 *          else
                 done!
 */
-function populateBoard(board) {
+function solvePuzzle(board) {
     var boardIn = createBoardCopy(board);
     var emptyCell = findEmptyCell(boardIn);
     if(emptyCell == null) {
@@ -56,12 +44,12 @@ function populateBoard(board) {
         }
         var index = randomInRange(len);
         emptyCell.value = emptyCell.possibleVals[index];
-        ret = populateBoard(boardIn);
+        ret = solvePuzzle(boardIn);
         if (ret == null) {
             emptyCell.possibleVals.splice(index,1);
             emptyCell.value = 0;
-        }
-    }
+        }    }
+    
     return ret;
 }
 
@@ -119,3 +107,46 @@ function updatePossibleValues(cell, board) {
     return update;
 }
 
+function hasConflict(cell, board) {
+    //check in row
+    for (var i = 0; i < DIMENSION; i++) {
+        if (i!=cell.column && board[cell.row][i].value == cell.value) {
+            return true;
+        }
+    }
+    //check in column
+    for (var i = 0; i < DIMENSION; i++) {
+        if (i!=cell.row && board[i][cell.column].value == cell.value) {
+            return true;
+        }
+    }
+    //check in block
+    var blockRow = Math.floor(cell.row/ROOT);
+    var blockColumn = Math.floor(cell.column/ROOT);
+    for (var i = 0; i<ROOT; i++) {
+        for (var j = 0; j < ROOT; j++) {
+            var ii = i + blockRow * ROOT;
+            var jj = j + blockColumn * ROOT;
+            if ((ii!=cell.row || jj!=cell.column) && board[ii][jj].value == cell.value) {
+                return true;
+            }
+        }
+    }
+}
+
+
+function findCellsWithSameNumber(value, board) {
+    var list = [];
+    for (var i = 0; i<DIMENSION; i++) {
+        for (var j = 0; j<DIMENSION; j++) {
+            if (board[i][j].value == value) {
+                list.push(board[i][j]);
+            }
+        }
+    }
+    return list;
+}
+
+function gameOver(board) {
+    return findEmptyCell(board) == null;
+}

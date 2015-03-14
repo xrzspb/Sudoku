@@ -1,26 +1,27 @@
+body {
+  background-color: #fffcf5; }
+
 td.board, td.gap-bottom, td.gap-double, td.gap-right {
   background-color: #e67e22;
   color: #FFFFFF;
-  padding: 15px;
-  margin: 15px;
+  padding: 1em;
+  margin: 1em;
   font-family: verdana;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 19px;
-  font-variant: normal;
+  font-size: 1em;
   text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  border-radius: 0px; }
+  cursor: pointer; }
 
 td.gap-bottom, td.gap-double {
-  border-bottom: 0.2em solid white; }
+  border-bottom: 0.2em solid #fffcf5; }
 
-td.gap-right {
-  border-right: 0.2em solid white; }
+td.gap-right, td.gap-double {
+  border-right: 0.2em solid #fffcf5; }
 
-td.gap-double {
-  border-right: 0.2em solid white; }
+td.selected {
+  background-color: #db4334; }
+
+td.highlighted {
+  background-color: #db4334; }
 
 button {
   position: relative;

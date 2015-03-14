@@ -1,29 +1,35 @@
+
+
+body
+  background-color: #fffcf5
+
 td.board
   background-color: #e67e22
   color: #FFFFFF
-  padding: 15px
-  margin: 15px
+  padding: 1em
+  margin: 1em
   font-family: verdana
-  font-style: normal
-  font-weight: normal
-  font-size: 19px
-  font-variant: normal
+  font-size: 1em
   text-align: center
-  text-decoration: none
   cursor: pointer
-  border-radius: 0px
 
 td.gap-bottom
   @extend td.board
-  border-bottom: 0.2em solid white
+  border-bottom: 0.2em solid #fffcf5
 
 td.gap-right
   @extend td.board
-  border-right: 0.2em solid white
+  border-right: 0.2em solid #fffcf5
 
 td.gap-double
+  @extend td.gap-right
   @extend td.gap-bottom
-  border-right: 0.2em solid white
+
+td.selected
+  background-color: #db4334
+
+td.highlighted
+  background-color: #db4334
 
 button
   position: relative
@@ -44,11 +50,9 @@ button
   box-shadow: inset 0 -2px #db4334
   border-radius: 10px
 
-
 button:active
   top: 1px
   outline: none
   -webkit-box-shadow: none
   box-shadow: none
-
 

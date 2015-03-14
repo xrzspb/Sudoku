@@ -4,7 +4,6 @@ function Cell() {
     this.value = -1;
     this.possibleVals = [];
 }
-
 Cell.prototype.init = function (row, column) {
     this.row = row;
     this.column = column;

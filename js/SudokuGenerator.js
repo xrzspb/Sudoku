@@ -1,61 +1,36 @@
-"use strict";
-generateBoard();
-generateNumbers();
-generatePuzzle();
-function generateBoard() {
-    var board = document.getElementById("board");
-    for (var i = 0; i < DIMENSION; i++) {
-        var row = document.createElement("TR");
-        row.setAttribute("id", "row" + i);
-        document.getElementById("board").appendChild(row);
-        for (var j = 0; j < DIMENSION; j++) {
-            var cell = document.createElement("TD");
-            cell.setAttribute("id", (i*DIMENSION + j).toString());
-            var textNode = document.createTextNode(j.toString());
-            if (i%ROOT == 2) {
-                cell.className = "gap-bottom";
-            } else {
-                cell.className = "board";
-            }
-            if (j%ROOT==2) {
-                cell.className="gap-right";
-            }
-            if (i%ROOT ==2 && j%ROOT==2) {
-                cell.className="gap-double";
-            }
-            cell.appendChild(textNode);
-            document.getElementById("row" + i).appendChild(cell);
+/*create board data and populate the board*/
+var sudokuBoard = null;
+function createBoard(difficulty) {
+    var board = createArray(DIMENSION, DIMENSION);
+    for (var i=0; i<DIMENSION; i++) {
+        for (var j=0; j<DIMENSION; j++) {
+            board[i][j] = new Cell().init(i,j);
         }
     }
-}
-
-function generateNumbers() {
-    var panel = document.getElementById("numbers");
-        var row = document.createElement("TR");
-        row.setAttribute("id", "number");
-        document.getElementById("numbers").appendChild(row);
-        for (var i = 0; i < DIMENSION; i++) {
-            var cell = document.createElement("TD");
-            cell.className = "number";
-            var button = document.createElement("BUTTON");
-            button.innerHTML = (i+1).toString();
-            cell.appendChild(button);
-            document.getElementById("number").appendChild(cell);
+    board = solvePuzzle(board);
+    var holesMade = 0;
+    while(holesMade < difficulty){
+        var row = randomInRange(DIMENSION);
+        var col = randomInRange(DIMENSION);
+        if(board[row][col].value != 0){
+            board[row][col].value = 0;
+            holesMade++;
         }
+    }
+    return board;
 }
 
-
-function generatePuzzle() {
-    var boardBack = createBoard();
+/*fill up the html table with board data*/
+function generatePuzzle(difficulty) {
+    sudokuBoard = createBoard(difficulty);
     for (var i = 0; i < DIMENSION; i++) {
         for (var j = 0; j<DIMENSION; j++) {
-            document.getElementById((i*DIMENSION+j).toString()).innerHTML = boardBack[i][j].value;
+            if(sudokuBoard[i][j].value != 0){
+                document.getElementById((i*DIMENSION+j).toString()).innerHTML = sudokuBoard[i][j].value;
+            } 
+            else {
+                document.getElementById((i*DIMENSION+j).toString()).innerHTML = null;
+            }
         }
     }
 }
-
-
-
-
-
-
