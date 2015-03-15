@@ -32,6 +32,17 @@ function isStrEmpty(str) {
     return (!str || !str.length);
 }
 
-function getId(row, column) {
-    return (row*DIMENSION + column).toString();
+function getId(blockRow , blockColumn, innerRow, innerColumn) {
+    return (blockRow*ROOT+innerRow)*DIMENSION + blockColumn*ROOT+innerColumn;
+}
+
+function getIdByRowCol(row, column) {
+    return row*DIMENSION + column;
+}
+
+function getRowFromId(id) {
+    return Math.floor(id/DIMENSION);
+}
+function getColumnFromId(id) {
+    return Math.floor(id%DIMENSION);
 }

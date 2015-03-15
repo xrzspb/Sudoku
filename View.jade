@@ -7,12 +7,17 @@ html
         script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
         script(src='js/Config.js')
         link(rel='stylesheet' type='text/css' href='style/Style.css')
+        meta(name="viewport" content="width=device-width,height=device-height,initial-scale=1.0")
     body
-        div(class='center')
-         table(id='board')
-         br
-         table(id='numbers')
-
+        div(class='center' align='center')
+            table(id='board')
+            br
+            table(id='numbers')
+            div(id="gameOverDialog" class='fadeInDownBig')
+                p Awesome!
+                button(class='popup, popup-1') Restart
+                div(class="divider")
+                button(class='popup, popup-1') Return
     script(src='js/Util.js')
     script(src='js/Cell.js')
     script(src='js/SudokuSolver.js')

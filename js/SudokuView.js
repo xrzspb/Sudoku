@@ -5,27 +5,27 @@ generatePuzzle(DIFFICULTY.EASY);
 /*paint sudoku board*/
 function paintBoard() {
     var board = document.getElementById("board");
-    for (var i = 0; i < DIMENSION; i++) {
-        var row = document.createElement("TR");
-        row.setAttribute("id", "row" + i);
+    board.className = 'outerTable';
+    for (var i = 0; i < ROOT; i++) {
+        var row  = document.createElement("TR");
         board.appendChild(row);
-        for (var j = 0; j < DIMENSION; j++) {
+        for (var j = 0; j < ROOT; j++) {
             var cell = document.createElement("TD");
-            cell.setAttribute("id", getId(i,j));
-            var textNode = document.createTextNode("0");
-            if ((i + 1) % ROOT == 0) {
-                cell.className = "gap-bottom";
-            } else {
-                cell.className = "board";
+            row.appendChild(cell);
+            var innerTable = document.createElement("TABLE");
+            innerTable.className = 'innerTable';
+            cell.appendChild(innerTable);
+            for (var m = 0; m < ROOT; m++) {
+                var innerRow = document.createElement("TR");
+                innerTable.appendChild(innerRow);
+                for (var n = 0; n < ROOT; n++) {
+                    var innerCell = document.createElement("TD");
+                    innerCell.className = 'board';
+                    innerRow.appendChild(innerCell);
+                    innerCell.setAttribute("id", getId(i, j, m, n));
+                    innerCell.innerHTML = '0';
+                }
             }
-            if ((j + 1) % ROOT == 0) {
-                cell.className="gap-right";
-            }
-            if ((i + 1) % ROOT == 0 && (j + 1) % ROOT == 0) {
-                cell.className="gap-double";
-            }
-            cell.appendChild(textNode);
-            document.getElementById("row" + i).appendChild(cell);
         }
     }
 }
@@ -39,6 +39,7 @@ function paintNumberPanel() {
         var cell = document.createElement("TD");
         cell.className = "number";
         var button = document.createElement("BUTTON");
+        button.className = "numbers";
         button.innerHTML = (num).toString();
         cell.appendChild(button);
         document.getElementById("number").appendChild(cell);

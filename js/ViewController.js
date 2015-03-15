@@ -4,19 +4,21 @@
 var selectedCell = null;
 var all_td = $('td');
 $(document).ready(function(){
-    $("#board TD").click(function() {
+    $("#board TR TD TABLE TR TD").click(function() {
         selectedCell = null;
         all_td.removeClass('selected');
         all_td.removeClass('highlighted');
         $(this).addClass('selected');
-        var col = parseInt($(this).index());
-        var row = parseInt($(this).parent().index());
-        console.log(row + ":" + col);
-        var val = getTDText(row,col);
-        if (isStrEmpty(val)) {
+        var id = this.id;
+        var row = getRowFromId(id);
+        var col = getColumnFromId(id);
+        console.log(row + ":" + col + " : " + id);
+        var val = getTDText(id);
+        if(!sudokuBoard[row][col].isPreset){
             selectedCell = new Cell().init(row, col);
-        } else {
-            //show other same number
+        }
+        if (!isStrEmpty(val)) {
+            //show other same numbesrs
             highlight(val);
         }
     });
@@ -31,6 +33,8 @@ $(document).ready(function(){
                 console.log("shake");
                 //shake the cell
             } else {
+                all_td.removeClass('selected');
+                all_td.removeClass('highlighted');
                 //populate the data model
                 sudokuBoard[selectedCell.row][selectedCell.column] = selectedCell;
                 //popluate the gui
@@ -39,7 +43,7 @@ $(document).ready(function(){
                 if (gameOver(sudokuBoard)) {
                     //TODO: if end, make animation in the board and have another layer to display.
                     //give user a choice to return to main page, or restart
-
+                    openPopup();
                 } else {
                     highlight(input.toString());
                 }
@@ -48,18 +52,35 @@ $(document).ready(function(){
     });
 });
 
-function getTDText(row, column) {
-    return document.getElementById(getId(row,column)).innerHTML;
+function openPopup() {
+    var gameOverDialog = $('#gameOverDialog');
+    gameOverDialog.fadeIn();
+    updatePopup();
+}
+function updatePopup() {
+    var popup = $('#gameOverDialog');
+    var offsets = $('div.center').offset();
+    var top = $(window).height()/2;
+    var left = ($(document).width() - $('div.center').outerWidth()*3)/2;
+    console.log(top + ":" + left);
+    popup.css({
+        'top': 100,
+        'left':left
+    });
+}
+
+function getTDText(id) {
+    return document.getElementById(id).innerHTML;
 }
 
 function setTDText(text, row, column) {
-    document.getElementById(getId(row,column)).innerHTML = text;
+    document.getElementById(getIdByRowCol(row,column)).innerHTML = text;
 }
 
 function highlight(val) {
     var list = findCellsWithSameNumber(parseInt(val), sudokuBoard);
     for (var i = 0; i < list.length; i++)  {
         var cell = list[i];
-        $("#board #" + getId(cell.row,cell.column)).addClass('highlighted');
+        $("#board #" + getIdByRowCol(cell.row,cell.column)).addClass('highlighted');
     }
 }

@@ -9,10 +9,10 @@ function createBoard(difficulty) {
     }
     board = solvePuzzle(board);
     var holesMade = 0;
-    while(holesMade < difficulty){
+    while(holesMade < difficulty) {
         var row = randomInRange(DIMENSION);
         var col = randomInRange(DIMENSION);
-        if(board[row][col].value != 0){
+        if (board[row][col].value != 0) {
             board[row][col].value = 0;
             holesMade++;
         }
@@ -26,10 +26,10 @@ function generatePuzzle(difficulty) {
     for (var i = 0; i < DIMENSION; i++) {
         for (var j = 0; j<DIMENSION; j++) {
             if(sudokuBoard[i][j].value != 0){
-                document.getElementById((i*DIMENSION+j).toString()).innerHTML = sudokuBoard[i][j].value;
-            } 
-            else {
-                document.getElementById((i*DIMENSION+j).toString()).innerHTML = null;
+                sudokuBoard[i][j].isPreset = true;
+                document.getElementById(getIdByRowCol(i, j)).innerHTML = sudokuBoard[i][j].value;
+            } else {
+                document.getElementById(getIdByRowCol(i, j)).innerHTML = null;
             }
         }
     }
