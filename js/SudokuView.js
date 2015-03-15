@@ -1,3 +1,5 @@
+paintBoard();
+paintNumberPanel();
 /*paint sudoku board*/
 function paintBoard() {
     var board = document.getElementById("board");

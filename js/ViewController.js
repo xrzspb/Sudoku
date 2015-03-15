@@ -2,10 +2,9 @@
  * Created by mengyan on 3/14/15.
  */
 var selectedCell = null;
+var sudokuBoard = null;
 var all_td = $('td');
 $(document).ready(function(){
-    paintBoard();
-    paintNumberPanel();
     $('#start').click(function () {
         changeView($(this), $('#difficulty'));
     });
@@ -14,20 +13,20 @@ $(document).ready(function(){
         var difficulty = null;
         console.log(this.id);
         switch (this.id) {
-            case '1' :
+            case 'easy':
                 difficulty = DIFFICULTY.EASY;
                 break;
-            case '2' :
+            case 'medium':
                 difficulty = DIFFICULTY.MEDIUM;
                 break;
-            case '3' :
+            case 'hard':
                 difficulty = DIFFICULTY.HARD;
                 break;
             default :
                 difficulty = DIFFICULTY.EASY;
         }
-        generatePuzzle(difficulty);
         changeView($(this), $('#playing'));
+        sudokuBoard = generatePuzzle(difficulty);
     });
 
 
@@ -49,7 +48,6 @@ $(document).ready(function(){
             highlight(val);
         }
     });
-
 
     $("#number TD BUTTON").click(function() {
         var input = parseInt($(this).parent().text());
