@@ -8,8 +8,22 @@ html
         script(src='js/Config.js')
         link(rel='stylesheet' type='text/css' href='style/Style.css')
         meta(name="viewport" content="width=device-width,height=device-height,initial-scale=1.0")
+    h1(align='center') SUDOKU
     body
-        div(class='center' align='center')
+        //start window
+        div(id='start' class='center' align='center')
+            button(id='start') Let's Start
+
+        //choose difficultiy
+        div(id='difficulty' class='center' align='center')
+            button(id='1' class="difficulty") Easy
+            br
+            button(id='2' class="difficulty") Medium
+            br
+            button(id='3' class="difficulty") Hard
+
+        //play window
+        div(id = 'playing' class='center' align='center')
             table(id='board')
             br
             table(id='numbers')

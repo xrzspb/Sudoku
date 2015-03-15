@@ -1,7 +1,3 @@
-paintBoard();
-paintNumberPanel();
-generatePuzzle(DIFFICULTY.EASY);
-
 /*paint sudoku board*/
 function paintBoard() {
     var board = document.getElementById("board");

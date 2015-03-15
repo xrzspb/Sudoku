@@ -4,6 +4,33 @@
 var selectedCell = null;
 var all_td = $('td');
 $(document).ready(function(){
+    paintBoard();
+    paintNumberPanel();
+    $('#start').click(function () {
+        changeView($(this), $('#difficulty'));
+    });
+
+    $('.difficulty').click(function () {
+        var difficulty = null;
+        console.log(this.id);
+        switch (this.id) {
+            case '1' :
+                difficulty = DIFFICULTY.EASY;
+                break;
+            case '2' :
+                difficulty = DIFFICULTY.MEDIUM;
+                break;
+            case '3' :
+                difficulty = DIFFICULTY.HARD;
+                break;
+            default :
+                difficulty = DIFFICULTY.EASY;
+        }
+        generatePuzzle(difficulty);
+        changeView($(this), $('#playing'));
+    });
+
+
     $("#board TR TD TABLE TR TD").click(function() {
         selectedCell = null;
         all_td.removeClass('selected');
@@ -59,12 +86,11 @@ function openPopup() {
 }
 function updatePopup() {
     var popup = $('#gameOverDialog');
-    var offsets = $('div.center').offset();
-    var top = $(window).height()/2;
-    var left = ($(document).width() - $('div.center').outerWidth()*3)/2;
+    var top = ($('table.outerTable').outerHeight() - $('#gameOverDialog').height())/2;
+    var left = ($('table.outerTable').outerWidth() - $('#gameOverDialog').width())/2;
     console.log(top + ":" + left);
     popup.css({
-        'top': 100,
+        'top': top,
         'left':left
     });
 }
@@ -83,4 +109,13 @@ function highlight(val) {
         var cell = list[i];
         $("#board #" + getIdByRowCol(cell.row,cell.column)).addClass('highlighted');
     }
+}
+
+function changeView(hide, show) {
+    hide.css({
+        'display': 'none'
+    });
+    show.css({
+        'display': 'block'
+    });
 }
