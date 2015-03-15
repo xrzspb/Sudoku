@@ -1,6 +1,6 @@
 h1
   position: fixed
-  color: #e74c3c
+  color: #2980b9
   top: 50px
   left: 50%
   font-family: corbert
@@ -26,17 +26,17 @@ body
   background-color: #fffcf5
 
 table.outerTable
-  border-spacing: 6px
+  border-spacing: 2px
 
 table.innerTable
   table-layout: fixed
-  border-spacing: 2px
+  border-spacing: 1px
 
 td.board
   width: 35px
   height: 35px
   table-layout: fixed
-  background-color: #e67e22
+  background-color: #2980b9
   color: #FFFFFF
   font-family: verdana
   font-size: 1em
@@ -44,14 +44,14 @@ td.board
   cursor: pointer
 
 td.selected
-  background-color: #db4334
+  background-color: #16a085
 
 td.highlighted
-  background-color: #db4334
+  background-color: #27ae60
 
 td.preSet
   @extend td.board
-  color: darkslategrey
+  color: gainsboro
 
 button.numbers
   position: relative
@@ -62,13 +62,13 @@ button.numbers
   color: white
   text-align: center
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25)
-  background: #e74c3c
+  background: #34495e
   border: 0
-  border-bottom: 2px solid #db4334
+  border-bottom: 2px solid #34495e
   cursor: pointer
-  -webkit-box-shadow: inset 0 -2px #db4334
-  box-shadow: inset 0 -2px #db4334
-  border-radius: 10px
+  -webkit-box-shadow: inset 0 -2px #34495e
+  box-shadow: inset 0 -2px #34495e
+  border-radius: 5px
 
 button.numbers:active
   top: 1px
@@ -76,14 +76,25 @@ button.numbers:active
   -webkit-box-shadow: none
   box-shadow: none
 
+button.numbers:hover
+  top: 1px
+  outline: none
+  -webkit-box-shadow: none
+  box-shadow: none
+  background-image: -webkit-linear-gradient(top, #3498db, #3498db)
+  background-image: -moz-linear-gradient(top, #3498db, #3498db)
+  background-image: -ms-linear-gradient(top, #3498db, #3498db)
+  background-image: -o-linear-gradient(top, #3498db, #3498db)
+  background-image: linear-gradient(to bottom, #3498db, #3498db)
+
 #gameOverDialog
   width: 200px
-  height: 200px
+  height: 100px
   display: none
   position: fixed
   background-color: #FFFCF5
   opacity: 0.9
-  color: #db4334
+  color: #34495e
   font-weight: bold
   border-radius: 1em
   font-family: 'Helvetica Neue', Helvetica, sans-serif
@@ -108,38 +119,26 @@ button.numbers:active
   -webkit-animation-name: fadeInDownBig
   animation-name: fadeInDownBig
 
-button.popup
-  padding: 14px 26px
-  font-size: 14px
-  line-height: 100%
-  text-shadow: 0 1px rgba(0, 0, 0, 0.4)
-  color: #FFFFFF
-
-  vertical-align: middle
-  text-align: center
-  cursor: pointer
-  font-weight: bold
-  transition: background 0.1s ease-in-out
-  -webkit-transition: background 0.1s ease-in-out
-  -moz-transition: background 0.1s ease-in-out
-  -ms-transition: background 0.1s ease-in-out
-  -o-transition: background 0.1s ease-in-out
-  text-shadow: 0 1px rgba(0, 0, 0, 0.3)
-  color: #FFFFFF
-  -webkit-border-radius: 40px
-  -moz-border-radius: 40px
-  border-radius: 40px
-  font-family: 'Helvetica Neue', Helvetica, sans-serif
-
-button.popup:active
-  padding-top: 5px
-
-button.popup, button.popup:hover, button.popup:active
-  outline: 0 none
-  text-decoration: none
-  color: #FFFFFF
-
 .divider
   width: 5px
   height: auto
   display: inline-block
+
+.btn
+  background: #34495e
+  -webkit-border-radius: 7px
+  -moz-border-radius: 7px
+  border-radius: 7px
+  font-family: Arial
+  color: #ffffff
+  font-size: 16px
+  padding: 10px 20px 10px 20px
+  text-decoration: none
+
+.btn:hover
+  background: #3498db
+  background-image: -webkit-linear-gradient(top, #3498db, #3498db)
+  background-image: -moz-linear-gradient(top, #3498db, #3498db)
+  background-image: -ms-linear-gradient(top, #3498db, #3498db)
+  background-image: -o-linear-gradient(top, #3498db, #3498db)
+  background-image: linear-gradient(to bottom, #3498db, #3498db)

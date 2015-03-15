@@ -12,26 +12,26 @@ html
     body
         //start window
         div(id='start' class='center' align='center')
-            button(id='start') Let's Start
+            button(id='start' class='btn') Let's Start
 
         //choose difficultiy
         div(id='difficulty' class='center' align='center')
-            button(id='easy' class="difficulty") Easy
-            br
-            button(id='medium' class="difficulty") Medium
-            br
-            button(id='hard' class="difficulty") Hard
+            button(id='easy' class="difficulty btn") Easy
+            div(class="divider")
+            button(id='medium' class="difficulty btn") Medium
+            div(class="divider")
+            button(id='hard' class="difficulty btn") Hard
 
         //play window
-        div(id = 'playing' class='center' align='center')
-            table(id='board')
+        div(id = 'playing' class='center')
+            table(id='board' align='center')
             br
-            table(id='numbers')
-            div(id="gameOverDialog" class='fadeInDownBig')
+            table(id='numbers' align='center')
+            div(id="gameOverDialog" class='fadeInDownBig' align='center')
                 p Awesome!
-                button(class='popup, popup-1') Restart
+                button(id='restart' class='btn') Restart
                 div(class="divider")
-                button(class='popup, popup-1') Return
+                button(id='return' class='btn') Return
     script(src='js/Util.js')
     script(src='js/Cell.js')
     script(src='js/SudokuView.js')

@@ -3,10 +3,11 @@
  */
 var selectedCell = null;
 var sudokuBoard = null;
+var diff = null;
 var all_td = $('td');
 $(document).ready(function(){
     $('#start').click(function () {
-        changeView($(this), $('#difficulty'));
+        changeView($('#start'), $('#difficulty'));
     });
 
     $('.difficulty').click(function () {
@@ -25,7 +26,8 @@ $(document).ready(function(){
             default :
                 difficulty = DIFFICULTY.EASY;
         }
-        changeView($(this), $('#playing'));
+        changeView($('#difficulty'), $('#playing'));
+        diff = difficulty;
         sudokuBoard = generatePuzzle(difficulty);
     });
 
@@ -74,6 +76,20 @@ $(document).ready(function(){
                 }
             }
         }
+    });
+    $('#restart').click(function() {
+        var gameOverDialog = $('#gameOverDialog');
+        gameOverDialog.fadeOut();
+        selectedCell = null;
+        sudokuBoard = generatePuzzle(diff);
+    });
+
+    $('#return').click(function() {
+        selectedCell = null;
+        sudokuBoard = null;
+        var gameOverDialog = $('#gameOverDialog');
+        gameOverDialog.fadeOut();
+        changeView($('#playing'), $('#start'));
     });
 });
 
