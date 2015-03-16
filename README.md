@@ -17,22 +17,32 @@ choose to restart or return to the starter page.
 Code Structure
 ===========================
 The whole structure are designed based on MVC framework.
-1. View: 
+
+1. View
+
   (1) View.jade: draws the basic UI, which is translated to HTML by 
                 Jade engine automatically
+                
   (2) SudokuView.js: it dynamicly draws UI of the sudoku board and
                     of the digits panel
-2. Model:
+                    
+2. Model
+
   (1) SudokuGenerator.js: creates the board data model
+  
   (2) SudokuSolver.js: manipulates the board data model
+  
   (3) Cell.js: class to represent a cell in the sudoku board. it 
               contains properties: row, column, value and possible values
-3. Controller: 
+              
+3. Controller 
   (1) ViewController.js: handles user action events
+
 4. Helper:
   (1) Config.js: contains constants which are used universally. 
                 it defines dimension of the board so that we can create an
                 advanced Soduku game in a larger board than 9*9
+
   (2) Util.js: contains general helper methods
 
 ============================
