@@ -32,13 +32,15 @@ The whole structure are designed based on MVC framework.
   
   (2) SudokuSolver.js: manipulates the board data model
   
-  (3) Cell.js: class to represent a cell in the sudoku board. it 
+  (3) Cell.js: represents a cell object in the sudoku board. it 
               contains properties: row, column, value and possible values
               
 3. Controller 
+
   (1) ViewController.js: handles user action events
 
 4. Helper:
+
   (1) Config.js: contains constants which are used universally. 
                 it defines dimension of the board so that we can create an
                 advanced Soduku game in a larger board than 9*9
