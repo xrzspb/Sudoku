@@ -1,0 +1,46 @@
+# Sudoku
+===========================
+How to run the application
+===========================
+Open View.html in a browser. The application supports multiple
+browers, including IE10, Chrome, Firefox, Safari and Opera.
+
+===========================
+Workflow 
+===========================
+Clicks on 'Let's start' in the starter page and then choose a 
+difficulty to start the game. 
+When game is over, a popup window will be displayed to let user
+choose to restart or return to the starter page.
+
+===========================
+Code Structure
+===========================
+The whole structure are designed based on MVC framework.
+-View: 
+  1. View.jade: draws the basic UI, which is translated to HTML by 
+                Jade engine automatically
+  2. SudokuView.js: it dynamicly draws UI of the sudoku board and
+                    of the digits panel
+-Model:
+  1. SudokuGenerator.js: creates the board data model
+  2. SudokuSolver.js: manipulates the board data model
+  3. Cell.js: class to represent a cell in the sudoku board. it 
+              contains properties: row, column, value and possible values
+-Controller: 
+  1. ViewController.js: handles user action events
+-Helper:
+  1. Config.js: contains constants which are used universally. 
+                it defines dimension of the board so that we can create an
+                advanced Soduku game in a larger board than 9*9
+  2. Util.js: contains general helper methods
+
+============================
+Unit Test
+============================
+using Qunit test framework to test logic in sudoku solver and in utility methods
+
+
+
+
+
