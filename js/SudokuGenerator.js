@@ -1,11 +1,17 @@
-/*create board data and populate the board*/
-function createBoard(difficulty) {
+/*create empty board*/
+function createEmptyBoard() {
     var board = createArray(DIMENSION, DIMENSION);
     for (var i=0; i<DIMENSION; i++) {
         for (var j=0; j<DIMENSION; j++) {
             board[i][j] = new Cell().init(i,j);
         }
     }
+    return board;
+}
+
+/*populate the board*/
+function createBoard(difficulty) {
+    var board = createEmptyBoard();
     board = solvePuzzle(board);
     var holesMade = 0;
     while(holesMade < difficulty) {
@@ -25,13 +31,12 @@ function generatePuzzle(difficulty) {
     for (var i = 0; i < DIMENSION; i++) {
         for (var j = 0; j<DIMENSION; j++) {
             document.getElementById(getIdByRowCol(i, j)).innerHTML = null;
-            document.getElementById(getIdByRowCol(i, j)).style.fontSize = '1.5em';
             document.getElementById(getIdByRowCol(i, j)).style.color = '#ffffff';
             if(sudokuBoard[i][j].value != 0){
                 console.log(i + ":" + j + " : " + sudokuBoard[i][j].value + " : " + getIdByRowCol(i, j));
                 sudokuBoard[i][j].isPreset = true;
                 document.getElementById(getIdByRowCol(i, j)).innerHTML = sudokuBoard[i][j].value;
-                document.getElementById(getIdByRowCol(i, j)).style.fontSize = '1em';
+                document.getElementById(getIdByRowCol(i, j)).style.color = '#bdc3c7';
             }
         }
     }

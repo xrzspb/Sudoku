@@ -48,7 +48,8 @@ function solvePuzzle(board) {
         if (ret == null) {
             emptyCell.possibleVals.splice(index,1);
             emptyCell.value = 0;
-        }    }
+        }
+    }
     
     return ret;
 }

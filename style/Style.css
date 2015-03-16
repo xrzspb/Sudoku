@@ -1,11 +1,5 @@
 h1 {
-  position: fixed;
-  color: #2980b9;
-  top: 50px;
-  left: 50%;
-  font-family: corbert;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%); }
+  color: #2980b9; }
 
 div.center {
   position: fixed;
@@ -24,6 +18,8 @@ body {
   background-color: #fffcf5; }
 
 table.outerTable {
+  position: relative;
+  top: 10%;
   border-spacing: 2px; }
 
 table.innerTable {
@@ -31,9 +27,8 @@ table.innerTable {
   border-spacing: 1px; }
 
 td.board, td.preSet {
-  width: 35px;
-  height: 35px;
-  table-layout: fixed;
+  width: 30px;
+  height: 30px;
   background-color: #2980b9;
   color: #FFFFFF;
   font-family: verdana;
@@ -48,7 +43,7 @@ td.highlighted {
   background-color: #27ae60; }
 
 td.preSet {
-  color: gainsboro; }
+  color: #7f8c8d; }
 
 button.numbers {
   position: relative;
