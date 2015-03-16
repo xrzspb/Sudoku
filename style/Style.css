@@ -45,6 +45,9 @@ td.highlighted {
 td.preSet {
   color: #7f8c8d; }
 
+td.warning {
+  background-color: red; }
+
 button.numbers {
   position: relative;
   vertical-align: top;

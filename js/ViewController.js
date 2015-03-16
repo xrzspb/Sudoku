@@ -12,7 +12,6 @@ $(document).ready(function(){
 
     $('.difficulty').click(function () {
         var difficulty = null;
-        console.log(this.id);
         switch (this.id) {
             case 'easy':
                 difficulty = DIFFICULTY.EASY;
@@ -36,11 +35,11 @@ $(document).ready(function(){
         selectedCell = null;
         all_td.removeClass('selected');
         all_td.removeClass('highlighted');
+        all_td.removeClass('warning');
         $(this).addClass('selected');
         var id = this.id;
         var row = getRowFromId(id);
         var col = getColumnFromId(id);
-        console.log(row + ":" + col + " : " + id);
         var val = getTDText(id);
         if(!sudokuBoard[row][col].isPreset){
             selectedCell = new Cell().init(row, col);
@@ -57,11 +56,12 @@ $(document).ready(function(){
             selectedCell.value = input;
             if (hasConflict(selectedCell, sudokuBoard)) {
                 selectedCell.value = 0;
-                console.log("shake");
-                //shake the cell
+                $('#'+getIdByRowCol(selectedCell.row, selectedCell.column)).addClass('warning');
             } else {
                 all_td.removeClass('selected');
                 all_td.removeClass('highlighted');
+                all_td.removeClass('warning');
+
                 //populate the data model
                 sudokuBoard[selectedCell.row][selectedCell.column] = selectedCell;
                 //popluate the gui
