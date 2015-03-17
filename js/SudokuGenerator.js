@@ -35,7 +35,7 @@ function generatePuzzle(difficulty) {
             if(sudokuBoard[i][j].value != 0){
                 sudokuBoard[i][j].isPreset = true;
                 document.getElementById(getIdByRowCol(i, j)).innerHTML = sudokuBoard[i][j].value;
-                document.getElementById(getIdByRowCol(i, j)).style.color = '#bdc3c7';
+                document.getElementById(getIdByRowCol(i, j)).style.color = '#fde3a7';
             }
         }
     }
