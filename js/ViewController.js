@@ -86,7 +86,7 @@ $(document).ready(function(){
         }
         if (!isStrEmpty(val)) {
             //show other same numbesrs
-            highlight(val);
+            highlight(val, row, col);
         }
     });
 
@@ -139,7 +139,7 @@ function actionOnInput(input) {
                 //give user a choice to return to main page, or restart
                 openPopup();
             } else {
-                highlight(input.toString());
+                highlight(input.toString(), selectedCell.row, selectedCell.column);
             }
         }
     }
@@ -174,11 +174,13 @@ function setTDText(text, row, column) {
     document.getElementById(getIdByRowCol(row,column)).innerHTML = text;
 }
 
-function highlight(val) {
+function highlight(val, row, column) {
     var list = findCellsWithSameNumber(parseInt(val), sudokuBoard);
     for (var i = 0; i < list.length; i++)  {
         var cell = list[i];
-        $("#board #" + getIdByRowCol(cell.row,cell.column)).addClass('highlighted');
+        if (cell.row != row || cell.column != column) {
+            $("#board #" + getIdByRowCol(cell.row, cell.column)).addClass('highlighted');
+        }
     }
 }
 
