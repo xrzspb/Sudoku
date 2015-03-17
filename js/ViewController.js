@@ -92,28 +92,19 @@ $(document).ready(function(){
 
     $("#number TD BUTTON").click(function() {
         var input = parseInt($(this).parent().text());
-        if (selectedCell != null) {
-            selectedCell.value = input;
-            if (hasConflict(selectedCell, sudokuBoard)) {
-                selectedCell.value = 0;
-                $('#'+getIdByRowCol(selectedCell.row, selectedCell.column)).addClass('warning');
-            } else {
-                cleanBoard();
-                //populate the data model
-                sudokuBoard[selectedCell.row][selectedCell.column] = selectedCell;
-                //popluate the gui
-                setTDText(input.toString(), selectedCell.row, selectedCell.column);
-                //check if game is over
-                if (gameOver(sudokuBoard)) {
-                    //TODO: if end, make animation in the board and have another layer to display.
-                    //give user a choice to return to main page, or restart
-                    openPopup();
-                } else {
-                    highlight(input.toString());
-                }
-            }
-        }
+        actionOnInput(input);
     });
+
+    $(document).on('keypress', function(e) {
+        var input = event.which || event.keyCode;
+        if (input< 49 || input >57) {
+            return;
+        }
+        input = input - 48;
+        actionOnInput(input);
+
+    });
+
     $('#restart').click(function() {
         var gameOverDialog = $('#gameOverDialog');
         gameOverDialog.fadeOut();
@@ -130,6 +121,29 @@ $(document).ready(function(){
     });
 });
 
+function actionOnInput(input) {
+    if (selectedCell != null) {
+        selectedCell.value = input;
+        if (hasConflict(selectedCell, sudokuBoard)) {
+            selectedCell.value = 0;
+            $('#' + getIdByRowCol(selectedCell.row, selectedCell.column)).addClass('warning');
+        } else {
+            cleanBoard();
+            //populate the data model
+            sudokuBoard[selectedCell.row][selectedCell.column] = selectedCell;
+            //popluate the gui
+            setTDText(input.toString(), selectedCell.row, selectedCell.column);
+            //check if game is over
+            if (gameOver(sudokuBoard)) {
+                //TODO: if end, make animation in the board and have another layer to display.
+                //give user a choice to return to main page, or restart
+                openPopup();
+            } else {
+                highlight(input.toString());
+            }
+        }
+    }
+}
 function cleanBoard() {
     all_td.removeClass('selected');
     all_td.removeClass('highlighted');
