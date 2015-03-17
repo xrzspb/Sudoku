@@ -133,6 +133,10 @@ function actionOnInput(input) {
             sudokuBoard[selectedCell.row][selectedCell.column] = selectedCell;
             //popluate the gui
             setTDText(input.toString(), selectedCell.row, selectedCell.column);
+            //check if it complete a row, column or block, if so, add animation
+            animateRow(selectedCell.row, sudokuBoard);
+            animateColumn(selectedCell.column, sudokuBoard);
+            animateBlock(selectedCell.row, selectedCell.column, sudokuBoard);
             //check if game is over
             if (gameOver(sudokuBoard)) {
                 //TODO: if end, make animation in the board and have another layer to display.
@@ -148,6 +152,7 @@ function cleanBoard() {
     all_td.removeClass('selected');
     all_td.removeClass('highlighted');
     all_td.removeClass('warning');
+    all_td.removeClass('complete');
 }
 
 function openPopup() {
@@ -193,4 +198,65 @@ function changeView(hide, show) {
     show.css({
         'display': 'block'
     });
+}
+
+function isRowComplete(row, board) {
+    for (var i = 0; i<DIMENSION; i++) {
+        if (board[row][i].value == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function animateRow(row, board) {
+    if (isRowComplete(row, board)) {
+        for (var i = 0; i < DIMENSION; i++) {
+            $("#board #" + getIdByRowCol(row, i)).addClass('complete');
+        }
+    }
+}
+
+function isColumnComplete(column, board) {
+    for (var i = 0; i<DIMENSION; i++) {
+        if (board[i][column].value == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function animateColumn(column, board) {
+    if (isColumnComplete(column, board)) {
+        for (var i = 0; i < DIMENSION; i++) {
+            $("#board #" + getIdByRowCol(i, column)).addClass('complete');
+        }
+    }
+}
+
+function isBlockComplete(row, column, board) {
+    var blockRow = getBlockRowFromRow(row);
+    var blockColumn = getBlockColumnFromColumn(column);
+    for (var i = 0; i < ROOT; i++) {
+        for (var j=0; j < ROOT; j++) {
+            if(board[blockRow*ROOT+i][blockColumn*ROOT+j].value == 0) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+function animateBlock(row, column, board) {
+    if(isBlockComplete(row, column, board)) {
+        var blockRow = getBlockRowFromRow(row);
+        var blockColumn = getBlockColumnFromColumn(column);
+        for (var i = 0; i < ROOT; i++) {
+            for (var j = 0; j < ROOT; j++) {
+                var r = blockRow * ROOT + i;
+                var c = blockColumn * ROOT + j;
+                $("#board #" + getIdByRowCol(r, c)).addClass('complete');
+            }
+        }
+    }
 }

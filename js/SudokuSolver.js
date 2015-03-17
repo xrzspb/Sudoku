@@ -135,7 +135,6 @@ function hasConflict(cell, board) {
     }
 }
 
-
 function findCellsWithSameNumber(value, board) {
     var list = [];
     for (var i = 0; i<DIMENSION; i++) {

@@ -46,3 +46,9 @@ function getRowFromId(id) {
 function getColumnFromId(id) {
     return Math.floor(id%DIMENSION);
 }
+function getBlockRowFromRow(row) {
+    return Math.floor(row/ROOT);
+}
+function getBlockColumnFromColumn(column) {
+    return Math.floor(column/ROOT);
+}
