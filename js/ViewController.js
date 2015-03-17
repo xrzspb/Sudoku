@@ -29,48 +29,11 @@ $(document).ready(function(){
         diff = difficulty;
         sudokuBoard = generatePuzzle(difficulty);
 
-		var playing = $('#playing');
-
-		var width = window.innerWidth
-		|| document.documentElement.clientWidth
-		|| document.body.clientWidth;
-		var height = window.innerHeight
-		|| document.documentElement.clientHeight
-		|| document.body.clientHeight;
-		height = Math.min(height,width);
-		width = Math.min(height,width);
-	
-		var left = (window.innerWidth - width)/2;
-		var top = (window.innerHeight - height)/2;
-		playing.css({
-			'height':height,
-			'width':width,
-			'left':left,
-			'top': top
-		});
-
+		onResize();
     });
 
 	$( window ).resize(function() {
-		var playing = $('#playing');
-		var width = window.innerWidth
-		|| document.documentElement.clientWidth
-		|| document.body.clientWidth;
-		var height = window.innerHeight
-		|| document.documentElement.clientHeight
-		|| document.body.clientHeight;
-		height = Math.min(height,width);
-		width = Math.min(height,width);
-
-		var left = (window.innerWidth - width)/2;
-		var top = (window.innerHeight - height)/2;
-		playing.css({
-			'height':height,
-			'width':width,
-			'left':left,
-			'top': top
-		});
-
+		onResize();
 	});
 
     $("#board TR TD TABLE TR TD").click(function() {
@@ -108,12 +71,14 @@ $(document).ready(function(){
         var gameOverDialog = $('#gameOverDialog');
         gameOverDialog.fadeOut();
         selectedCell = null;
+        cleanBoard();
         sudokuBoard = generatePuzzle(diff);
     });
 
     $('#return').click(function() {
         selectedCell = null;
         sudokuBoard = null;
+        cleanBoard();
         var gameOverDialog = $('#gameOverDialog');
         gameOverDialog.fadeOut();
         changeView($('#playing'), $('#start'));
@@ -257,4 +222,27 @@ function animateBlock(row, column, board) {
             }
         }
     }
+}
+
+function onResize(){
+	var playing = $('#playing');
+	var width = window.innerWidth
+	|| document.documentElement.clientWidth
+	|| document.body.clientWidth;
+	var height = window.innerHeight
+	|| document.documentElement.clientHeight
+	|| document.body.clientHeight;
+	height = Math.min(height,width);
+	width = Math.min(height,width);
+
+	var left = (window.innerWidth - width)/2;
+	var top = (window.innerHeight - height)/2;
+	playing.css({
+		'height':height,
+		'width':width,
+		'left':left,
+		'top': top
+	});
+
+	updatePopup();
 }
