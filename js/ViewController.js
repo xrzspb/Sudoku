@@ -102,7 +102,6 @@ $(document).ready(function(){
         }
         input = input - 48;
         actionOnInput(input);
-
     });
 
     $('#restart').click(function() {
@@ -139,7 +138,6 @@ function actionOnInput(input) {
             animateBlock(selectedCell.row, selectedCell.column, sudokuBoard);
             //check if game is over
             if (gameOver(sudokuBoard)) {
-                //TODO: if end, make animation in the board and have another layer to display.
                 //give user a choice to return to main page, or restart
                 openPopup();
             } else {

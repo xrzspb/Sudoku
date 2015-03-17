@@ -5,4 +5,4 @@ var DIFFICULTY = {
     EASY: 35,
     MEDIUM: 45,
     HARD: 55
-}
+};

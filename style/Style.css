@@ -56,7 +56,7 @@ td.highlighted {
   background-color: #34495e; }
 
 td.preSet {
-  color: #fde3a7; }
+  font-weight: inherit; }
 
 td.warning {
   background-color: red; }
@@ -121,7 +121,7 @@ button.numbers:hover {
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   border-radius: 7px;
-  font-family: Arial;
+  font-family: Arial, serif;
   color: #ffffff;
   font-size: 16px;
   padding: 10px 20px 10px 20px;
@@ -135,6 +135,13 @@ button.numbers:hover {
   background-image: -o-linear-gradient(top, #3498db, #3498db);
   background-image: linear-gradient(to bottom, #3498db, #3498db); }
 
+@keyframes thumb {
+  0% {
+    transform: scale(1); }
+  50% {
+    transform: scale(0.9); }
+  100% {
+    transform: scale(1); } }
 @-webkit-keyframes thumb {
   0% {
     -webkit-transform: scale(1); }
@@ -142,11 +149,28 @@ button.numbers:hover {
     -webkit-transform: scale(0.9); }
   100% {
     -webkit-transform: scale(1); } }
+@-moz-keyframes thumb {
+  0% {
+    -moz-transform: scale(1); }
+  50% {
+    -moz-transform: scale(0.9); }
+  100% {
+    -moz-transform: scale(1); } }
 .complete {
+  animation-name: thumb;
+  animation-duration: 200ms;
+  transform-origin: 50% 50%;
+  animation-iteration-count: 2;
+  animation-timing-function: linear;
   -webkit-animation-name: thumb;
   -webkit-animation-duration: 200ms;
   -webkit-transform-origin: 50% 50%;
   -webkit-animation-iteration-count: 2;
-  -webkit-animation-timing-function: linear; }
+  -webkit-animation-timing-function: linear;
+  -moz-animation-name: thumb;
+  -moz-animation-duration: 200ms;
+  -moz-transform-origin: 50% 50%;
+  -moz-animation-iteration-count: 2;
+  -moz-animation-timing-function: linear; }
 
 /*# sourceMappingURL=Style.css.map */

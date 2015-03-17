@@ -32,10 +32,11 @@ function generatePuzzle(difficulty) {
         for (var j = 0; j<DIMENSION; j++) {
             document.getElementById(getIdByRowCol(i, j)).innerHTML = null;
             document.getElementById(getIdByRowCol(i, j)).style.color = '#ffffff';
+            document.getElementById(getIdByRowCol(i, j)).style.fontWeight = 'bold';
             if(sudokuBoard[i][j].value != 0){
                 sudokuBoard[i][j].isPreset = true;
                 document.getElementById(getIdByRowCol(i, j)).innerHTML = sudokuBoard[i][j].value;
-                document.getElementById(getIdByRowCol(i, j)).style.color = '#fde3a7';
+                document.getElementById(getIdByRowCol(i, j)).style.fontWeight = 'inherit';
             }
         }
     }
