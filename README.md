@@ -22,6 +22,9 @@ Interactions:
 2. when user select a filled cell, other cells with the same number 
    will be highlighted
 
+3. when a row, column or block is fully filled, an animation will be 
+   displayed
+
 ===========================
 Responsive Web Design
 ===========================
