@@ -19,7 +19,7 @@ Interactions:
 1. user can use keyboard or the Input panel to fill a
    number in a cell. If input is invalid, the cell will become red
 
-2. when user select a filled cell, other cells with the same digit 
+2. when user select a filled cell, other cells with the same number 
    will be highlighted
 
 ===========================
