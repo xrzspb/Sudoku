@@ -14,6 +14,20 @@ When game is over, a popup window will be displayed to let user
 choose to restart or return to the starter page.
 
 ===========================
+Responsive Web Design
+===========================
+To make UI look nice in multiple broswers and devices is challenging. 
+
+To implement responsive design, I did couple things: 
+
+  1. use relative sizes instead of absolute size for components
+  
+  2. calculate component size dynamically based on window's size
+   
+  3. use an Input Panel for user input, considering it's difficult and 
+     slow to use keyboard in mobile devices
+
+===========================
 Code Structure
 ===========================
 The whole structure are designed based on MVC framework.
