@@ -10,8 +10,17 @@ Workflow
 ===========================
 Clicks on 'Let's start' in the starter page and then choose a 
 difficulty to start the game. 
+
 When game is over, a popup window will be displayed to let user
 choose to restart or return to the starter page.
+
+Interactions: 
+
+1. user can use keyboard or the Input panel to fill a
+   number in a cell. If input is invalid, the cell will become red
+
+2. when user select a filled cell, other cells with the same digit 
+   will be highlighted
 
 ===========================
 Responsive Web Design
