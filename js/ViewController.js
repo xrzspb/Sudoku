@@ -96,7 +96,7 @@ $(document).ready(function(){
     });
 
     $(document).on('keypress', function(e) {
-        var input = event.which || event.keyCode;
+        var input = e.which || e.keyCode;
         if (input< 49 || input >57) {
             return;
         }
