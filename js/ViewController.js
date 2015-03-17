@@ -180,6 +180,8 @@ function highlight(val, row, column) {
         var cell = list[i];
         if (cell.row != row || cell.column != column) {
             $("#board #" + getIdByRowCol(cell.row, cell.column)).addClass('highlighted');
+        } else {
+            $("#board #" + getIdByRowCol(cell.row, cell.column)).addClass('selected');
         }
     }
 }
