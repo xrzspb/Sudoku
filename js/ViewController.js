@@ -28,14 +28,54 @@ $(document).ready(function(){
         changeView($('#difficulty'), $('#playing'));
         diff = difficulty;
         sudokuBoard = generatePuzzle(difficulty);
+
+		var playing = $('#playing');
+
+		var width = window.innerWidth
+		|| document.documentElement.clientWidth
+		|| document.body.clientWidth;
+		var height = window.innerHeight
+		|| document.documentElement.clientHeight
+		|| document.body.clientHeight;
+		height = Math.min(height,width);
+		width = Math.min(height,width);
+	
+		var left = (window.innerWidth - width)/2;
+		var top = (window.innerHeight - height)/2;
+		playing.css({
+			'height':height,
+			'width':width,
+			'left':left,
+			'top': top
+		});
+
     });
 
+	$( window ).resize(function() {
+		var playing = $('#playing');
+		var width = window.innerWidth
+		|| document.documentElement.clientWidth
+		|| document.body.clientWidth;
+		var height = window.innerHeight
+		|| document.documentElement.clientHeight
+		|| document.body.clientHeight;
+		height = Math.min(height,width);
+		width = Math.min(height,width);
+
+		var left = (window.innerWidth - width)/2;
+		var top = (window.innerHeight - height)/2;
+		playing.css({
+			'height':height,
+			'width':width,
+			'left':left,
+			'top': top
+		});
+
+	});
 
     $("#board TR TD TABLE TR TD").click(function() {
         selectedCell = null;
-        all_td.removeClass('selected');
-        all_td.removeClass('highlighted');
-        all_td.removeClass('warning');
+        cleanBoard();
         $(this).addClass('selected');
         var id = this.id;
         var row = getRowFromId(id);
@@ -58,10 +98,7 @@ $(document).ready(function(){
                 selectedCell.value = 0;
                 $('#'+getIdByRowCol(selectedCell.row, selectedCell.column)).addClass('warning');
             } else {
-                all_td.removeClass('selected');
-                all_td.removeClass('highlighted');
-                all_td.removeClass('warning');
-
+                cleanBoard();
                 //populate the data model
                 sudokuBoard[selectedCell.row][selectedCell.column] = selectedCell;
                 //popluate the gui
@@ -93,6 +130,12 @@ $(document).ready(function(){
     });
 });
 
+function cleanBoard() {
+    all_td.removeClass('selected');
+    all_td.removeClass('highlighted');
+    all_td.removeClass('warning');
+}
+
 function openPopup() {
     var gameOverDialog = $('#gameOverDialog');
     gameOverDialog.fadeIn();
@@ -100,8 +143,8 @@ function openPopup() {
 }
 function updatePopup() {
     var popup = $('#gameOverDialog');
-    var top = ($('table.outerTable').outerHeight() - $('#gameOverDialog').height())/2;
-    var left = ($('table.outerTable').outerWidth() - $('#gameOverDialog').width())/2;
+    var top = ($('#playing').height() - $('#gameOverDialog').height())/2;
+    var left = ($('#playing').width() - $('#gameOverDialog').width())/2;
     console.log(top + ":" + left);
     popup.css({
         'top': top,

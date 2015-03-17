@@ -9,6 +9,7 @@ function paintBoard() {
         board.appendChild(row);
         for (var j = 0; j < ROOT; j++) {
             var cell = document.createElement("TD");
+			cell.className = "outer";
             row.appendChild(cell);
             var innerTable = document.createElement("TABLE");
             innerTable.className = 'innerTable';
@@ -21,7 +22,7 @@ function paintBoard() {
                     innerCell.className = 'board';
                     innerRow.appendChild(innerCell);
                     innerCell.setAttribute("id", getId(i, j, m, n));
-                    innerCell.innerHTML = '0';
+					innerCell.innerHTML = '0';
                 }
             }
         }
@@ -30,6 +31,7 @@ function paintBoard() {
 /*paint number input panel, this is particular useful for mobile device*/
 function paintNumberPanel() {
     var panel = document.getElementById("numbers");
+	panel.className = "candidates";
     var row = document.createElement("TR");
     row.setAttribute("id", "number");
     document.getElementById("numbers").appendChild(row);
